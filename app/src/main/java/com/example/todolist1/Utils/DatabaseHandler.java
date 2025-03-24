@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import com.example.todolist1.Model.TodoModel;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
+    Context context;
     private static final int VERSION = 1;
     private static final String NAME = "toDoListDatabase";
     private static final String TODO_TABLE = "todo";
@@ -25,7 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
-    private DatabaseHandler(Context context){
+    public DatabaseHandler(Context context){
         super(context, NAME, null, VERSION);
     }
 
@@ -89,10 +91,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void updateTask(int id, String task){
         ContentValues cv = new ContentValues();
         cv.put(TASK, task);
-        db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+//        db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+        long result = db.update(TODO_TABLE, cv, ID +  "=?", new String[]{String.valueOf(id)});
+        if(result == -1) {
+            Toast.makeText(context, "Failed to Update", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void deleteTask(int id){
-        db.delete(TODO_TABLE, ID + "= ?", new String[] {String.valueOf(id)});
+//        db.delete(TODO_TABLE, ID + "= ?", new String[] {String.valueOf(id)});
+        long result = db.delete(TODO_TABLE, ID+"=?", new String[]{String.valueOf(id)});
+        if(result == -1) {
+            Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Deleted Successfully!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

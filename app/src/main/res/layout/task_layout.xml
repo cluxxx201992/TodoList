@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     app:cardElevation="4dp"
     app:cardCornerRadius="8dp"
@@ -16,9 +18,10 @@
             android:id="@+id/todoCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tool:text="This is a Sample Task"
+
             android:paddingStart="8dp"
-            android:buttonTint="@android:color/holo_blue_light"/>
+            android:buttonTint="@android:color/holo_blue_light"
+            tool:text="Go to the market and bring vegetables immediately today."/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

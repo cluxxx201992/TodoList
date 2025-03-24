@@ -15,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:textSize="32sp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskRecyclerView"
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
         android:layout_below="@id/tasksText"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:nestedScrollingEnabled="true"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
